@@ -8,7 +8,7 @@ SetWorkingDir, %A_ScriptDir%
 
 ; ------------------- Config ----------------------
 
-AddonName = TypeGreek Windows test Addon
+AddonName = TypeGreek Windows template addon
 infoUrl = "https://stickypiston-development.github.io/typegreek-windows/"
 
 ; ------------------ Tray menu --------------------
