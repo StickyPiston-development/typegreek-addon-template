@@ -27,6 +27,14 @@ MsgBox, 0, %AddonName%, %AddonName% loaded!     ;Notify user
 
 ; ------------------ Menu Code ---------------------
 
+~^+!t::
+Suspend, Toggle
+IF A_ISSUSPENDED = 1
+Menu, tray, icon, disabled_icon.ico, , 1
+else if A_ISSUSPENDED = 0
+Menu, tray, icon, icon.ico, , 1
+return
+
 Exit:
 ExitApp
 return
