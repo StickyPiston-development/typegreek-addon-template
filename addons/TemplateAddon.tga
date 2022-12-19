@@ -9,6 +9,7 @@ SetWorkingDir, %A_ScriptDir%
 ; ------------------- Config ----------------------
 
 AddonName = TypeGreek Windows template addon
+Description = template Description
 infoUrl = "https://stickypiston-development.github.io/typegreek-windows/"
 
 ; ------------------ Tray menu --------------------
@@ -19,11 +20,21 @@ Menu, Tray, Icon, ./../icon.ico                 ;Set icon
 Menu, Tray, Add, Addon Info, Info               ;Addon info
 Menu, Tray, Add, Exit addon, Exit               ;Exit
 
-MsgBox, 0, %AddonName%, %AddonName% loaded!     ;Notify user
+; Change the taskbar icon
+hIcon := DllCall("LoadImage", uint, 0, str, A_ScriptDir ".\..\icon.ico"
+	, uint, 1, int, 0, int, 0, uint, 0x10)      ; Type, Width, Height, Flags
+Gui +LastFound                                  ; Set the "last found window" for use in the next lines.
+SendMessage, 0x80, 0, hIcon                     ; Set the window's small icon (0x80 is WM_SETICON).
+SendMessage, 0x80, 1, hIcon                     ; Set the window's big icon to the same one.
 
 ; ------------------ Addon code --------------------
 
-
+; Show GUI for taskbar icon to work.
+Gui, show
+; Send startup message (not necessary)
+MsgBox, 262144, %AddonName%, %Description%, 5
+; Close GUI
+Gui, Hide
 
 ; ------------------ Menu Code ---------------------
 
